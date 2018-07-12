@@ -19,7 +19,7 @@
         - If your object doesn't have values you need yet, you can add those properties in the model.
     -->
     <script id="article-template" type="text/x-handlebars-template">
-      <article  data-category="{{category}}">
+      <article data-author="{{author}}" data-category="{{category}}">
         <header>
           <h1>{{title}}</h1>
           <div>
@@ -30,6 +30,13 @@
         <section class="article-body">{{{body}}}</section>
         <a href="#" class="read-on">Read on &rarr;</a>
       </article>
+    </script>
+    <script id="filter-template" type="text/x-handlebars-template">
+      <li>
+        <select id="{{id}}-filter">
+          <option value="">-- Filter by Authors --</option>
+        </select>
+      </li>
     </script>
 
   </head>
@@ -54,18 +61,7 @@
     <main>
       <section id="articles" class="tab-content">
         <div>
-          <ul id="filters">
-            <li>
-              <select id="author-filter">
-                <option value="">-- Filter by Authors --</option>
-              </select>
-            </li>
-            <li>
-              <select id="category-filter">
-                <option value="">-- Filter by Categories --</option>
-              </select>
-            </li>
-          </ul>
+          <ul id="filters"></ul>
         </div>
       </section>
       <section id="about" class="tab-content">
@@ -91,6 +87,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.11/handlebars.min.js"></script>
     <script src="scripts/blogArticles.js"></script>
     <script src="scripts/article.js"></script>
+    <script src="scripts/filter.js"></script>
     <script src="scripts/articleView.js"></script>
   </body>
 </html>
