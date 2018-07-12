@@ -17,18 +17,11 @@ Article.prototype.toHtml = function() {
   let renderTemplate  = Handlebars.compile(templateHtml);
 
 
-  return renderTemplate(this);
-
-
-
-
   // REVIEW: If your template will use properties that aren't on the object yet, add them.
   // Since your template can't hold any JS logic, we need to execute the logic here.
   // The result is added to the object as a new property, which can then be referenced by key in the template.
   // For example, you might want to display how old a post is, or say "(draft)" if it has no publication date:
   this.daysAgo = parseInt((new Date() - new Date(this.publishedOn))/60/60/24/1000);
-
-
   this.publishStatus = this.publishedOn ? `published ${this.daysAgo} days ago` : '(draft)';
 
   // REVIEW: The ternary operator above accomplishes this same logic.
@@ -39,11 +32,11 @@ Article.prototype.toHtml = function() {
   // }
 
   // TODO: Use the method that Handlebars gave you to return your filled-in html template for THIS article.
-
+  return renderTemplate(this);
 };
 
 // COMMENT: Why are there parentheses around "(a,b)" in the .sort() method, but not around the "articleObject" or "article" arguments in the .forEach() methods?
-// PUT YOUR RESPONSE HERE
+// We can use no parameters, one parameter or many. if we use many we have to use () with commas to separate the parameter.
 rawData.sort((a,b) => {
   return (new Date(b.publishedOn)) - (new Date(a.publishedOn));
 });
